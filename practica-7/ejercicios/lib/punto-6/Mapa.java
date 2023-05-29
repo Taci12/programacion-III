@@ -23,36 +23,46 @@ public class Mapa {
       for (int i = 0; i < mapaCiudades.listaDeVertices().tamanio(); i++)
         marca[i] = false;
       int posicion = obtenerPosicion(ciudad1);
+      resultado.comenzar();
       devolverCaminoRecursivo(resultado, posicion, marca, ciudad2);
-      resultado.eliminarEn(resultado.tamanio() - 1);
       return resultado;
     } else
       return null;
   }
 
-  // gracias Mate
-  private void devolverCaminoRecursivo(ListaGenerica<String> resultado, int posicion, boolean[] marca,
-      String destino) {
+  // // gracias Mate
+  // private void devolverCaminoRecursivo(ListaGenerica<String> resultado, int
+  // posicion, boolean[] marca,
+  // String destino) {
 
-    // funciona si pongo que marque la posicion adentro del if
-    marca[posicion] = true;
-    if (mapaCiudades.vertice(posicion).dato() == destino) {
-      resultado.agregarInicio(destino);
-      return;
-    }
+  // marca[posicion] = true;
+  // // funciona si pongo que marque la posicion adentro del if
+  // if (mapaCiudades.vertice(posicion).dato() == destino) {
+  // resultado.agregarInicio(destino);
+  // return;
+  // }
 
-    ListaGenerica<Arista<String>> adyacentes = mapaCiudades.listaDeAdyacentes(mapaCiudades.vertice(posicion));
-    int adyacencias = mapaCiudades.listaDeAdyacentes(mapaCiudades.vertice(posicion)).tamanio();
+  // ListaGenerica<Arista<String>> adyacentes =
+  // mapaCiudades.listaDeAdyacentes(mapaCiudades.vertice(posicion));
+  // int adyacencias =
+  // mapaCiudades.listaDeAdyacentes(mapaCiudades.vertice(posicion)).tamanio();
 
-    // mientras que no haya encontrado al vertice resultado, sigo recorriendo
-    for (int i = 0; (i < adyacencias) && (resultado.esVacia()); i++) {
-      if (!marca[i])
-        devolverCaminoRecursivo(resultado, adyacentes.elemento(i).verticeDestino().posicion(), marca, destino);
-      // si encontro el destino, agrego el actual a la lista
-      if (!resultado.esVacia())
-        resultado.agregarInicio(adyacentes.elemento(i).verticeDestino().dato());
-    }
-  }
+  // // mientras que no haya encontrado al vertice resultado, sigo recorriendo
+  // int i = 0;
+  // while ((i < adyacencias) && (resultado.esVacia())) {
+  // if (!marca[i]) {
+  // devolverCaminoRecursivo(resultado,
+  // adyacentes.elemento(i).verticeDestino().posicion(), marca, destino);
+
+  // }
+  // // si encontro el destino, agrego el actual a la lista
+  // if (!resultado.esVacia())
+  // resultado.agregarInicio(adyacentes.elemento(i).verticeDestino().dato());
+  // i++;
+  // }
+  // }
+
+  private void 
 
   // encuentra el nodo que contiene a ciudad1
   private int obtenerPosicion(String ciudad1) {
