@@ -46,9 +46,14 @@ public class testMapa {
     // caminoMasCorto = m.caminoMasCorto("Buenos Aires", "Madagascar");
     // System.out.println("Camino mas corto de Buenos Aires a Miame: " +
     // caminoMasCorto.toString());
-    ListaGenerica<String> caminoSinCargar = new ListaGenericaEnlazada<String>();
-    caminoSinCargar = m.caminoSinCargarCombustible(ciudades, "Buenos Aires", "New York", 5);
-    System.out.println("Camino sin cargar combustible: " + caminoSinCargar.toString() + "\n");
+    // ListaGenerica<String> caminoSinCargar = new ListaGenericaEnlazada<String>();
+    // caminoSinCargar = m.caminoSinCargarCombustible(ciudades, "Buenos Aires", "New
+    // York", 5);
+    // System.out.println("Camino sin cargar combustible: " +
+    // caminoSinCargar.toString() + "\n");
+    ListaGenerica<String> caminoMenosCargas = new ListaGenericaEnlazada<String>();
+    caminoMenosCargas = m.caminoConMenorCargaDeCombustible("Buenos Aires", "Madagascar", 10);
+    System.out.println("Camino con menos cargas combustible: " + caminoMenosCargas.toString() + "\n");
   }
 
 }

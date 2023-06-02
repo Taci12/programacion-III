@@ -239,7 +239,7 @@ public class Mapa {
 
   public ListaGenerica<String> caminoConMenorCargaDeCombustible(String ciudad1, String ciudad2, int tanqueAuto) {
 
-    ListaGenerica<String> resultado = new ListaGenericaEnlazada<String>();
+    ResultadoCargas resultado = new ResultadoCargas();
     ListaGenerica<String> auxiliar = new ListaGenericaEnlazada<String>();
     boolean[] marca = new boolean[this.mapaCiudades.listaDeVertices().tamanio()];
 
@@ -249,37 +249,56 @@ public class Mapa {
     Vertice<String> origenVertice = obtenerVertice(ciudad1);
     Vertice<String> destinoVertice = obtenerVertice(ciudad2);
     if ((origenVertice != null) && (destinoVertice != null)) {
-      resultado.comenzar();
+      resultado.getCamino().comenzar();
       auxiliar.comenzar();
-      menorCargaRecursivo(origenVertice, destinoVertice, tanqueAuto, 999, 0, tanqueAuto, resultado, auxiliar, marca);
+      menorCargaRecursivo(origenVertice, destinoVertice, 0, tanqueAuto, tanqueAuto, resultado, auxiliar,
+          marca);
     }
-    return resultado;
+    return resultado.getCamino();
   }
 
-  private void menorCargaRecursivo(Vertice<String> actualVertice, Vertice<String> destinoVertice, int tanqueAuto,
-      int cantidadMinima, int cantidadActual, int capacidadTanque,
-      ListaGenerica<String> resultado, ListaGenerica<String> auxiliar, boolean[] marca) {
+  private void menorCargaRecursivo(Vertice<String> actualVertice, Vertice<String> destinoVertice,
+      int cantidadActual, int capacidadTanque, int tanqueActual, ResultadoCargas resultado,
+      ListaGenerica<String> auxiliar,
+      boolean[] marca) {
 
+    System.out.println("Resultado: " + resultado.getCamino().toString());
+    System.out.println("Cargas: " + resultado.getCantidadMinima());
+    System.out.println("Auxiliar: " + auxiliar.toString());
+    System.out.println("Ciudad Actual: " + actualVertice.dato());
+    System.out.println("Tanque Actual: " + tanqueActual + "\n");
     // si todavia tengo nafta en el tanque
-    if (tanqueAuto >= 0) {
-      auxiliar.agregarFinal(actualVertice.dato());
-      marca[actualVertice.posicion()] = true;
-      if (actualVertice.dato().equals(destinoVertice.dato()) && (cantidadActual < cantidadMinima))
-        copiarLista(resultado, auxiliar);
-      else {
-        Arista<String> actualArista;
-        ListaGenerica<Arista<String>> adyacentes = this.mapaCiudades.listaDeAdyacentes(actualVertice);
-        adyacentes.comenzar();
-        while (!adyacentes.fin()) {
-          actualArista = adyacentes.proximo();
-          if (!marca[actualArista.verticeDestino().posicion()])
-            menorCargaRecursivo(actualArista.verticeDestino(), destinoVertice, tanqueAuto - actualArista.peso(),
-                cantidadMinima, cantidadActual, capacidadTanque, resultado, auxiliar, marca);
+    auxiliar.agregarFinal(actualVertice.dato());
+    marca[actualVertice.posicion()] = true;
+
+    if (actualVertice.dato().equals(destinoVertice.dato()) && (cantidadActual < resultado.getCantidadMinima())) {
+      copiarLista(resultado.getCamino(), auxiliar);
+      resultado.setCantidadMinima(cantidadActual);
+    }
+
+    else {
+      Arista<String> actualArista;
+      ListaGenerica<Arista<String>> adyacentes = this.mapaCiudades.listaDeAdyacentes(actualVertice);
+      adyacentes.comenzar();
+
+      while (!adyacentes.fin()) {
+        actualArista = adyacentes.proximo();
+        if (!marca[actualArista.verticeDestino().posicion()]) {
+          // si no lo visite, me fijo si hay que cargar combustible o no
+          if ((tanqueActual >= actualArista.peso()))
+            // no tengo que cargar, resto al tanque el combustible necesario para viajar
+            menorCargaRecursivo(actualArista.verticeDestino(), destinoVertice, cantidadActual,
+                capacidadTanque, tanqueActual - actualArista.peso(), resultado, auxiliar, marca);
+          else {
+            // si tengo que cargar, paso la capacidad del tanque como tanque actual y sumo
+            // uno a la cantidad de cargas
+            menorCargaRecursivo(actualArista.verticeDestino(), destinoVertice, cantidadActual + 1, capacidadTanque,
+                capacidadTanque - actualArista.peso(), resultado, auxiliar, marca);
+          }
         }
       }
-    } else {
-
     }
+    marca[actualVertice.posicion()] = false;
+    auxiliar.eliminarEn(auxiliar.tamanio() - 1);
   }
-
 }
