@@ -1,6 +1,6 @@
 public class TestEjercicio7 {
   public static void main(String[] args) {
-    Algoritmos algoritmos = new Algoritmos();
+    Algoritmos<Integer> algoritmos = new Algoritmos<Integer>();
     Grafo<Integer> grafo = new GrafoImplListAdy<Integer>();
 
     Vertice<Integer> uno = new VerticeImplListAdy<Integer>(1);
@@ -26,9 +26,15 @@ public class TestEjercicio7 {
     grafo.conectar(cuatro, cinco, 0);
     grafo.conectar(seis, cuatro, 0);
 
-    if (algoritmos.subgrafoCuadrado(grafo))
-      System.out.println("El grafo tiene un subgrafo cuadrado");
+    // if (algoritmos.subgrafoCuadrado(grafo))
+    // System.out.println("El grafo tiene un subgrafo cuadrado");
+    // else
+    // System.out.println("El grafo no tiene un subgrafo cuadrado");
+    // System.out.println("El grado del grafo es " + algoritmos.getGrado(grafo));
+    if (algoritmos.tieneCiclo(grafo))
+      System.out.println("El grafo tiene ciclo");
     else
-      System.out.println("El grafo no tiene un subgrafo cuadrado");
+      System.out.println("El grafo no tiene ciclo");
+
   }
 }
