@@ -1,0 +1,49 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "TestEjercicio7",
+      "request": "launch",
+      "mainClass": "TestEjercicio7",
+      "projectName": "ejercicios_d1d130f6"
+    },
+    {
+      "type": "java",
+      "name": "TestPunto8",
+      "request": "launch",
+      "mainClass": "TestPunto8",
+      "projectName": "ejercicios_d1d130f6"
+    },
+    {
+      "type": "java",
+      "name": "TestPunto9",
+      "request": "launch",
+      "mainClass": "TestPunto9",
+      "projectName": "ejercicios_d1d130f6"
+    },
+    {
+      "type": "java",
+      "name": "TestRecorridos",
+      "request": "launch",
+      "mainClass": "TestRecorridos",
+      "projectName": "ejercicios_d1d130f6"
+    },
+    {
+      "type": "java",
+      "name": "testMapa",
+      "request": "launch",
+      "mainClass": "testMapa",
+      "projectName": "ejercicios_d1d130f6"
+    }
+  ]
+}
