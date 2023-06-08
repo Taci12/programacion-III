@@ -26,11 +26,11 @@ public class TestEjercicio7 {
     grafo.conectar(cuatro, cinco, 0);
     grafo.conectar(seis, cuatro, 0);
 
-    // if (algoritmos.subgrafoCuadrado(grafo))
-    // System.out.println("El grafo tiene un subgrafo cuadrado");
-    // else
-    // System.out.println("El grafo no tiene un subgrafo cuadrado");
-    // System.out.println("El grado del grafo es " + algoritmos.getGrado(grafo));
+    if (algoritmos.subgrafoCuadrado(grafo))
+      System.out.println("El grafo tiene un subgrafo cuadrado");
+    else
+      System.out.println("El grafo no tiene un subgrafo cuadrado");
+    System.out.println("El grado del grafo es " + algoritmos.getGrado(grafo));
     if (algoritmos.tieneCiclo(grafo))
       System.out.println("El grafo tiene ciclo");
     else
