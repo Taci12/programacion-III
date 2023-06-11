@@ -5,10 +5,11 @@
     "lib/punto-8",
     "lib/punto-7",
     "lib/punto-6",
+    "lib/punto-5",
     "lib/listagenerica",
     "lib/grafos",
     "lib/colagenerica",
-    "lib/punto-5"
+    "lib/punto-10"
   ],
   "java.project.outputPath": "bin",
   "java.project.referencedLibraries": ["lib/**/*.jar"]

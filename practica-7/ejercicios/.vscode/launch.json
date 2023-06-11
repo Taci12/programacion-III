@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TestPunto10",
+      "request": "launch",
+      "mainClass": "TestPunto10",
+      "projectName": "ejercicios_d1d130f6"
+    },
+    {
+      "type": "java",
       "name": "Current File",
       "request": "launch",
       "mainClass": "${file}"

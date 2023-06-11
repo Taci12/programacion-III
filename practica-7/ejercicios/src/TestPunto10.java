@@ -1,4 +1,4 @@
-public class TestPunto9 {
+public class TestPunto10 {
   public static void main(String[] args) {
     Grafo<String> grafo = new GrafoImplListAdy<String>();
 
@@ -48,8 +48,8 @@ public class TestPunto9 {
     grafo.conectar(cityBell, villaElisa, 30);
     grafo.conectar(villaElisa, cityBell, 30);
 
-    GuiaDeTurismo g = new GuiaDeTurismo();
-    ListaGenerica<String> camino = g.caminoConMenorNrodeViajes(grafo, "La Plata", "Villa Elisagit");
-    System.out.println("El camino es: " + camino.toString());
+    GradosDeSeparacion<String> g = new GradosDeSeparacion<String>();
+    int grado = g.maximoGradoDeSeparacion(grafo);
+    System.out.println("El maximo grado de separacion es: " + grado);
   }
 }

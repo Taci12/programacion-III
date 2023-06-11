@@ -8,7 +8,7 @@ public class ColaGenerica<T> {
   }
 
   public boolean esVacia() {
-    return (this.tope() == null);
+    return (this.size == -1);
   }
 
   public void encolar(T elemento) {
