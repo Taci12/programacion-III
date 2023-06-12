@@ -1,0 +1,11 @@
+{
+  "java.project.sourcePaths": [
+    "src",
+    "lib/parcial-7",
+    "lib/listagenerica",
+    "lib/grafos",
+    "lib/colagenerica"
+  ],
+  "java.project.outputPath": "bin",
+  "java.project.referencedLibraries": ["lib/**/*.jar"]
+}
